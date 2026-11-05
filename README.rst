@@ -16,7 +16,7 @@ my_api_demo
 .. code-block:: bash
 
    poetry install
-   poetry run uvicorn my_api_demo.main:app --reload --host 0.0.0.0 --port 8000
+   poetry run uvicorn python_api_project.main:app --reload --host 0.0.0.0 --port 8000
 
 然后访问 http://127.0.0.1:8000/docs 查看交互式文档。
 
