@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from fastapi import APIRouter, HTTPException
 import requests
+import os
 
 router = APIRouter(prefix="/api/upmedia", tags=["上报新闻模块"])
 
@@ -14,11 +15,10 @@ def get_upmedia_headlines():
             " (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
     }
-    # 本地代理（已确认 7983 端口可用）
-    proxies = {
-        "http": "http://127.0.0.1:7983",
-        "https": "http://127.0.0.1:7983",
-    }
+
+    # 优先从环境变量读取代理，没有就不用代理
+    proxy_url = os.getenv("HTTP_PROXY") or os.getenv("HTTPS_PROXY")
+    proxies = {"http": proxy_url, "https": proxy_url} if proxy_url else None
 
     try:
         response = requests.get(
