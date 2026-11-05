@@ -1,5 +1,5 @@
-my_api_demo
-===========
+python_api_project
+==================
 
 基于 Poetry + FastAPI + APIRouter 的模块化后端演示项目。
 
@@ -23,5 +23,27 @@ my_api_demo
 代理说明
 --------
 
-如需通过代理访问外部网站，可设置环境变量 ``HTTP_PROXY`` / ``HTTPS_PROXY``，
-或在 ``routers/upmedia_api.py`` 中取消代理相关注释。
+如需通过代理访问外部网站，可设置环境变量：
+
+.. code-block:: bash
+
+   # Windows PowerShell
+   $env:HTTP_PROXY="http://127.0.0.1:7983"
+   $env:HTTPS_PROXY="http://127.0.0.1:7983"
+
+   # Linux / macOS
+   export HTTP_PROXY=http://127.0.0.1:7983
+   export HTTPS_PROXY=http://127.0.0.1:7983
+
+不设置环境变量时，将直接访问目标网站（云服务器部署推荐不设置代理）。
+
+部署说明
+--------
+
+已支持部署到 Railway / Render 等平台。
+
+启动命令示例：
+
+.. code-block:: bash
+
+   poetry run uvicorn python_api_project.main:app --host 0.0.0.0 --port $PORT
