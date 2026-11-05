@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "python_api_project"
+version = "0.1.0"
+description = "Modular FastAPI demo with weather and news scrapers"
+authors = ["slowfever <slowfever.ding@gmail.com>"]
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.0"
+uvicorn = {extras = ["standard"], version = "^0.32.0"}
+requests = "^2.32.0"
+beautifulsoup4 = "^4.12.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.0.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
